@@ -1,36 +1,36 @@
 function [u,t,it]=RKIfuncional(f,t0,T,N,u0,b,c,A,itmax,tol)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Esta función resuelve el problema de valor inicial
+% Esta funciï¿½n resuelve el problema de valor inicial
 %       u'=f(t,u)
 %       u(t0)=u0
-% utilizandodo un método Runge-Kutta ímplicito con la iteración 
+% utilizandodo un mï¿½todo Runge-Kutta ï¿½mplicito con la iteraciï¿½n 
 % funcional (IF)
 %
 %           [u,t,it]=RKIfuncional(f,t0,T,N,u0,b,c,A,itmax,tol)
 %
 %  Variables de Entrada:
 %
-%       f: vector columna. función que rige el sistema de EDO, 
+%       f: vector columna. funciï¿½n que rige el sistema de EDO, 
 %          tiene dos argumentos f(t,u) donde t es un vector       
 %          columna y u vector columna.   
 %       t0: tiempo inicial 
 %       tf: tiempo final
-%       N : número de pasos 
+%       N : nï¿½mero de pasos 
 %       u0: vector columna. Dato inicial
 %       b,c,A: coeficientes del tablero de BUTCHER. 
 %              A matriz cuadrada de orden s
-%              b vector fila de tamaño s
-%              c vector columna de tamaño s
+%              b vector fila de tamaï¿½o s
+%              c vector columna de tamaï¿½o s
 %       tol: tolerancia para las iteraciones
-%       itmax: Numero máximo de iteraciones
+%       itmax: Numero mï¿½ximo de iteraciones
 %       
 %  Variables de Salida:
 %
-%       u: matriz de length(u0)·length(t) que contiene la         
-%         solución
+%       u: matriz de length(u0)ï¿½length(t) que contiene la         
+%         soluciï¿½n
 %       t: vector de tiempos
 %       it: Vector que contiene el numero de iteraciones         
-%           utilizadas, para cada paso de tiempo en la iteración
+%           utilizadas, para cada paso de tiempo en la iteraciï¿½n
 %           funcional
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,16 +38,16 @@ h=(T-t0)/N;
 t=t0:h:T;
 d=length(u0);
 u=zeros(d,length(t));
-u(:,1)=u0; %En la columna 1 guardamos la solución inicial 
+u(:,1)=u0; %En la columna 1 guardamos la soluciï¿½n inicial 
 %
 %Aplicamos el algoritmo Runge-Kutta
-s=length(b); %número de pasos
+s=length(b); %nï¿½mero de pasos
 e=ones(s,1);
 I=eye(d);
 it=zeros(N,1);
 for n=1:N
-    tt=t(n)+c*h;% vector columna de tamaño s
-    V=kron(e,u(:,n)); %vector columna de tamaño s·d
+    tt=t(n)+c*h;% vector columna de tamaï¿½o s
+    V=kron(e,u(:,n)); %vector columna de tamaï¿½o sï¿½d
     error=1;
     while (it(n)<itmax && error>tol)
         it(n)=it(n)+1;

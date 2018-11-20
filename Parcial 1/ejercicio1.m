@@ -31,7 +31,7 @@ h = [];
 diferencia = [];
 
 % con N < 10000 no funciona (peta por alguna razon) 
-for N=5000:5000:10000
+for N=5000:5000:100000
   h((N-5000)/5000+1)=(tf-t0)/N;
   [U,t, it]=RKIfuncional(@f1,t0,tf,N,u0,b,c,A, 100, 0.001);
   sol = f1_exac(t);

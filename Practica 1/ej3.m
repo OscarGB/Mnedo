@@ -33,6 +33,7 @@ for n=1:5
   e1(n)=max(abs(U(:,N(n)+1)-uexac(:,N(n)+1)));
   e2(n)=max(max(abs(U-uexac)));
 end
+eeuler = e2;
 
 figure(1);
 clf;
@@ -41,7 +42,7 @@ figure(1);
 title("Método de Euler");
 loglog(N,e1)
 loglog(N,e2)
-legend('final', 'maximo');
+legend('final', 'máximo');
 hold off;
 
 %Runge
@@ -54,6 +55,7 @@ for n=1:5
   e1(n)=max(abs(U(:,N(n)+1)-uexac(:,N(n)+1)));
   e2(n)=max(max(abs(U-uexac)));
 end
+erunge = e2;
 
 figure(2);
 clf;
@@ -62,7 +64,7 @@ figure(2);
 title("Método de Runge");
 loglog(N,e1)
 loglog(N,e2)
-legend('final', 'maximo');
+legend('final', 'máximo');
 hold off;
 
 %Heun2
@@ -75,6 +77,7 @@ for n=1:5
   e1(n)=max(abs(U(:,N(n)+1)-uexac(:,N(n)+1)));
   e2(n)=max(max(abs(U-uexac)));
 end
+eheun2 = e2;
 
 figure(3);
 clf;
@@ -83,7 +86,7 @@ figure(3);
 title("Método de Heun2");
 loglog(N,e1)
 loglog(N,e2)
-legend('final', 'maximo');
+legend('final', 'máximo');
 hold off;
 
 %Heun3
@@ -96,6 +99,7 @@ for n=1:5
   e1(n)=max(abs(U(:,N(n)+1)-uexac(:,N(n)+1)));
   e2(n)=max(max(abs(U-uexac)));
 end
+eheun3 = e2;
 
 figure(4);
 clf;
@@ -104,7 +108,7 @@ figure(4);
 title("Método de Heun3");
 loglog(N,e1)
 loglog(N,e2)
-legend('final', 'maximo');
+legend('final', 'máximo');
 hold off;
 
 
@@ -118,6 +122,7 @@ for n=1:5
   e1(n)=max(abs(U(:,N(n)+1)-uexac(:,N(n)+1)));
   e2(n)=max(max(abs(U-uexac)));
 end
+ekutta = e2;
 
 figure(5);
 clf;
@@ -126,7 +131,7 @@ figure(5);
 title("Método de Kutta");
 loglog(N,e1)
 loglog(N,e2)
-legend('final', 'maximo');
+legend('final', 'máximo');
 hold off;
 
 
@@ -140,6 +145,7 @@ for n=1:5
   e1(n)=max(abs(U(:,N(n)+1)-uexac(:,N(n)+1)));
   e2(n)=max(max(abs(U-uexac)));
 end
+e38 = e2;
 
 figure(6);
 clf;
@@ -148,7 +154,21 @@ figure(6);
 title("Método de 3/8");
 loglog(N,e1)
 loglog(N,e2)
-legend('final', 'maximo');
+legend('final', 'máximo');
+hold off;
+
+figure(7);
+clf;
+hold on;
+figure(7);
+title("Comparaciones");
+loglog(N,eeuler)
+loglog(N,erunge)
+loglog(N,eheun2)
+loglog(N,eheun3)
+loglog(N,ekutta)
+loglog(N,e38)
+legend('Euler', 'Runge', 'Heun2', 'Heun3', 'Kutta', '3/8');
 hold off;
 
 

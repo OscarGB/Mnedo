@@ -1,11 +1,11 @@
-function [u,t]=RKexplicito(f,T,t0,N,u0,b,c,A)
+function [u,t]=RKexplicito(f,N,t0,T,u0,A,b,c)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Esta función resuelve el problema de valor inicial
 % u'=f(t,u)
 % u(t0)=u0
 % utilizandodo un método Runge-Kutta explícito
 %
-% [u,t]=RKexplicito(f,T,t0,N,u0,b,c,A)
+% [u,t]=RKexplicito(f,N,t0,T,u0,A,b,c)
 %
 % Variables de Entrada:
 %
@@ -36,15 +36,15 @@ function [u,t]=RKexplicito(f,T,t0,N,u0,b,c,A)
   for n=1:N
     k(:,1) = feval(f, t(n)+c(1)*h, u(:,n));
     for i=2:s
-      sum = zeros(length(u0));
-      for j=1:i
+      sum = zeros(length(u0),1);
+      for j=1:i-1
         sum = sum + A(i,j)*k(:,j);
       end
-      k(:,i) = feval(t(n)+c(i)*h, u(:,n) + h*sum)
+      k(:,i) = feval(f, t(n)+c(i)*h, u(:,n) + h*sum);
     end
-    sum = zeros(length(uo));
+    sum = zeros(length(u0),1);
     for i=1:s
-      sum = sum + b(i)*k(i);
+      sum = sum + b(i)*k(:,i);
     end
     u(:,n+1) = u(:,n) + h*sum;
   end  

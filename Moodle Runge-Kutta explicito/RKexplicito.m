@@ -1,19 +1,19 @@
-function [u,t]=RKexplicito(f,tf,t0,N,u0,b,c,A)
+function [u,t]=RKexplicito(f,N,t0,tf,u0,A,b,c)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Esta función resuelve el problema de valor inicial
+%  Esta funciï¿½n resuelve el problema de valor inicial
 %       u'=f(t,u)
 %       u(t0)=u0
-% utilizandodo un método Runge-Kutta explicito
+% utilizandodo un mï¿½todo Runge-Kutta explicito
 %
 %           [u,t]=RKexplicito(f,tf,t0,N,u0,b,c,A)
 %
 %  Variables de Entrada:
 %
-%       f: vector columna. función que rige el sistema de EDO, 
+%       f: vector columna. funciï¿½n que rige el sistema de EDO, 
 %          tiene dos argumentos f(t,u) donde t es escalar
 %          y u vector columna.   
-%       N: número de pasos en los que dividimos el intervalo de
-%          integración
+%       N: nï¿½mero de pasos en los que dividimos el intervalo de
+%          integraciï¿½n
 %       t0: tiempo inicial 
 %       tf: tiempo final
 %       u0: vector columna. Dato inicial
@@ -21,13 +21,13 @@ function [u,t]=RKexplicito(f,tf,t0,N,u0,b,c,A)
 %
 %  Variables de Salida:
 %
-%       u: matriz de length(u0) x length(t) que contiene la solución
+%       u: matriz de length(u0) x length(t) que contiene la soluciï¿½n
 %       t: vector de tiempos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 h=(tf-t0)/N;
 t=t0:h:tf;
 u=zeros(length(u0),N+1);
-u(:,1)=u0; %En la columna 1 guardamos la solución inicial 
+u(:,1)=u0; %En la columna 1 guardamos la soluciï¿½n inicial 
 s=size(b,2);
 k=zeros(length(u0),s);
 

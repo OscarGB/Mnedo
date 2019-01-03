@@ -1,14 +1,14 @@
 function F=Fest_RK(x,y,A,b,c)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Calcula la función
+%  Calcula la funciï¿½n
 %       |F_est(z)|-1=|1+zb^T(I-zA)^{-1}e|-1  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %       A,b,c: coeficientes del tablero de BUTCHER. 
 %       A: matriz cuadrada de orden s
-%       b: vector fila de tamaño s
-%       c: vector columna de tamaño s
+%       b: vector fila de tamaï¿½o s
+%       c: vector columna de tamaï¿½o s
 %
 z=x+1i*y;
 F=abs(1+z.*b*inv(eye(size(A))-z.*A)*ones(size(c)))-1;
